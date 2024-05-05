@@ -1,0 +1,36 @@
+creative_mind_task:
+  description: >
+    Develop a creative idea for a {story_type} in the genre: {genre} and including one of the following themes: {themes}
+  expected_output: >
+    A creative idea for a {genre} {story_type}. The idea should be unique and imaginative, and should include one of the following themes: {themes}.
+
+creative_writer_task:
+  description: >
+    Write a creative {story_type} based on the creative idea.
+  expected_output: >
+    A creative {genre} {story_type} based on the creative idea.
+    The story should be engaging and transport the reader to another world.
+
+writing_editor_task:
+  description: >
+    Ensure the creative writing conforms to the structure: {structure},
+    the genre is {genre}, and that the wrting includes one of the following themes: {themes}.
+  expected_output: >
+    An engaging {genre} {story_type} that is well-written, follows the {structure}.
+    Use the tool provided to create an audio file of the story conent.
+
+cover_designer_task:
+  description: >
+    Create a visually stunning cover for the {genre} {story_type}.
+  expected_output: >
+    A visually stunning cover for the {genre} {story_type} in the style of {cover_style}.
+    Make sure the cover captures the essence of the themes: {themes} and reclects the content.
+
+scribe_task:
+  description: >
+    Create a markdown file with the final elements of the story and format it for publication.
+  expected_output: >
+    Generate a markdown file containing the elements of the {genre} {story_type}.
+    Use the provided template for guidance: {template}.
+    Do not include any unnecessary content in the markdown file.
+    Formated as markdown with out '```'
