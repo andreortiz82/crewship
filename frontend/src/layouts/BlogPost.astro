@@ -7,7 +7,7 @@ import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, audio_file } = Astro.props;
 ---
 
 <html lang="en">
@@ -76,6 +76,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<h1>{title}</h1>
 						<hr />
 					</div>
+					<audio controls>
+						<source src={audio_file} type="audio/mpeg">
+						Your browser does not support the audio element.
+					  </audio>
 					<slot />
 				</div>
 			</article>

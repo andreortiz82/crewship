@@ -6,3 +6,6 @@ pnpm-debug.log*
 .env
 .env.production
 .DS_Store
+audio-*.mp3
+cover-*.png
+output/

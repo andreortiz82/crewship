@@ -12,12 +12,16 @@ cover_designer_task:
   expected_output: >
     A visually stunning cover for the creative idea in the style of {cover_style}.
     Make sure the cover captures the essence of the creative idea.
+    Use the tool provided to create an image file for the idea.
 
 scribe_task:
   description: >
-    Create a markdown file with the creative idea.
-  expected_output: >
     Create a markdown file containing the creative idea.
+  expected_output: >
+    A markdown file containing the creative idea.
     Use the provided template for guidance: {template}.
+    Replace all the placeholder tags in the template with the correct data.
+    Replace the [HERO_IMAGE_URL] tag with the URL of the image file in the template: {template}.
+    Replace the [AUDIO_FILE_URL] tag with the URL of the audio file in the template: {template}.
     Do not include any unnecessary content in the markdown file.
-    Do not include the '```'
+    Do not include the '```markdown ```' tags in the markdown file.

@@ -2,10 +2,12 @@ from crewai import Agent, Crew, Process, Task
 from openai import OpenAI
 from crewai.project import CrewBase, agent, crew, task
 from custom_tool import GenerateCover, GenerateWhisper
+from datetime import datetime
 
 client = OpenAI()
 cover_tool = GenerateCover()
 whisper_tool = GenerateWhisper()
+datetime_tag = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
 
 @CrewBase
 class CrewshipCrew():
@@ -23,14 +25,6 @@ class CrewshipCrew():
 		)
 	
 	@agent
-	def scribe(self) -> Agent:
-		return Agent(
-			config=self.agents_config['scribe'],
-			verbose=True,
-			allow_delegation=False,
-		)
-	
-	@agent
 	def cover_designer(self) -> Agent:
 		return Agent(
 			config=self.agents_config['cover_designer'],
@@ -39,6 +33,14 @@ class CrewshipCrew():
 			allow_delegation=False,
 		)
 
+	@agent
+	def scribe(self) -> Agent:
+		return Agent(
+			config=self.agents_config['scribe'],
+			verbose=True,
+			allow_delegation=False,
+		)
+	
 	@task
 	def creative_mind_task(self) -> Task:
 		return Task(
@@ -48,22 +50,22 @@ class CrewshipCrew():
 		)
 	
 	@task
-	def scribe_task(self) -> Task:
-		return Task(
-			config=self.tasks_config['scribe_task'],
-			agent=self.scribe(),
-			requires_input=True,
-			output_file="index.mdx",
-		)
-	
-	@task
 	def cover_designer_task(self) -> Task:
 		return Task(
 			config=self.tasks_config['cover_designer_task'],
 			agent=self.cover_designer(),
 			requires_input=True
 		)
-
+	
+	@task
+	def scribe_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['scribe_task'],
+			agent=self.scribe(),
+			requires_input=True,
+			output_file=f"frontend/src/content/blog/generated-{datetime_tag}.md",
+		)
+	
 	@crew
 	def crew(self) -> Crew:
 		"""Creates the Crewship crew"""
