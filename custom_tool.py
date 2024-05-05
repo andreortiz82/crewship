@@ -8,12 +8,12 @@ class GenerateWhisper(BaseTool):
     name: str = "Generate Whisper"
     description: str = "Takes the Task output and converts it to an audio file using the Whisper API."
 
-    def _run(self, argument: str) -> str:
+    def _run(self, text: str) -> str:
         speech_file_path = Path(__file__).parent / "audio.mp3"
         response = client.audio.speech.create(
         model="tts-1",
         voice="alloy",
-        input=argument
+        input=text
         )
         response.write_to_file(speech_file_path)
         return speech_file_path
