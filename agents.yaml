@@ -1,6 +1,6 @@
-creative_mind:
+storyteller:
   role: >
-    Creative Mind
+    Storyteller
   goal: >
     Develop a creative idea for a {story_type} in the {genre} genre and including one of the following themes: {themes}
   backstory: >
@@ -18,9 +18,9 @@ cover_designer:
     known for your ability to capture the essence of a story and convey it through your designs.
     Your covers are eye-catching and draw readers in, making them eager to discover what lies within.
 
-scribe:
+markdown_developer:
   role: >
-    Scribe
+    Markdown Developer
   goal: >
     Create a properly formatted markdown file for the {genre} {story_type}
   backstory: >

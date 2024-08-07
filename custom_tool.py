@@ -3,9 +3,7 @@ from datetime import datetime
 from pathlib import Path
 from openai import OpenAI
 from crewai_tools import BaseTool
-from upload import upload_to_s3
 client = OpenAI()
-
 
 class GenerateWhisper(BaseTool):
     name: str = "Generate Whisper"
@@ -18,13 +16,10 @@ class GenerateWhisper(BaseTool):
         speech_file_path = Path(__file__).parent / file_name
         response = client.audio.speech.create(
         model="tts-1",
-        voice="alloy",
+        voice="fable",
         input=text)
-        
-        response.write_to_file(speech_file_path)
-        fileupload = upload_to_s3(file_name, 'ao-web-assets')
-        print(f"Audio uploaded: {fileupload}")
-        return fileupload
+        audiofile = response.write_to_file(speech_file_path)
+        return audiofile
 
 
 class GenerateCover(BaseTool):
@@ -51,6 +46,4 @@ class GenerateCover(BaseTool):
         with open(image_path, 'wb') as f:
             f.write(image_response.content)
         
-        fileupload = upload_to_s3(image_path, 'ao-web-assets')
-        print(f"Image uploaded: {fileupload}")
-        return fileupload
+        return image_path

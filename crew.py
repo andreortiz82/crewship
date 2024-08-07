@@ -16,9 +16,9 @@ class CrewshipCrew():
 	tasks_config = 'tasks.yaml'
 
 	@agent
-	def creative_mind(self) -> Agent:
+	def storyteller(self) -> Agent:
 		return Agent(
-			config=self.agents_config['creative_mind'],
+			config=self.agents_config['storyteller'],
 			verbose=True,
 			memory=False,
 			allow_delegation=True,
@@ -34,18 +34,18 @@ class CrewshipCrew():
 		)
 
 	@agent
-	def scribe(self) -> Agent:
+	def markdown_developer(self) -> Agent:
 		return Agent(
-			config=self.agents_config['scribe'],
+			config=self.agents_config['markdown_developer'],
 			verbose=True,
 			allow_delegation=False,
 		)
 	
 	@task
-	def creative_mind_task(self) -> Task:
+	def storyteller_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['creative_mind_task'],
-			agent=self.creative_mind(),
+			config=self.tasks_config['storyteller_task'],
+			agent=self.storyteller(),
 			tools=[whisper_tool]
 		)
 	
@@ -58,12 +58,12 @@ class CrewshipCrew():
 		)
 	
 	@task
-	def scribe_task(self) -> Task:
+	def markdown_developer_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['scribe_task'],
-			agent=self.scribe(),
+			config=self.tasks_config['markdown_developer_task'],
+			agent=self.markdown_developer(),
 			requires_input=True,
-			output_file=f"frontend/src/content/blog/generated-{datetime_tag}.md",
+			output_file=f"content-{datetime_tag}.md",
 		)
 	
 	@crew

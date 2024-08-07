@@ -1,13 +1,6 @@
 #!/usr/bin/env python
-import os
-import shutil
 from pathlib import Path
-from datetime import datetime
 from crew import CrewshipCrew
-from upload import upload_to_s3
-
-def cleanupcrew(results, source_dir):
-    print("DO IT NOW: Tasks are completed.")
     
     
 def main():
@@ -41,9 +34,7 @@ The haiku is a Japanese poetic form that consists of three lines, with five syll
 
     # Kick off the crew's task execution
     results = CrewshipCrew().crew().kickoff(inputs=inputs)
-    cleanupcrew(results, os.getcwd())
-    # fileupload = upload_to_s3('demo.html', 'ao-web-assets')
-    # print(f"HTML uploaded: {fileupload}")
+    print(results)
 
 if __name__ == '__main__':
     main()

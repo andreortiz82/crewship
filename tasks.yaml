@@ -1,4 +1,4 @@
-creative_mind_task:
+storyteller_task:
   description: >
     Write a {story_type} in the genre: {genre}. Randomly choose one of the following themes: {themes}
   expected_output: >
@@ -14,7 +14,7 @@ cover_designer_task:
     Make sure the cover captures the essence of the creative idea.
     Use the tool provided to create an image file for the idea.
 
-scribe_task:
+markdown_developer_task:
   description: >
     Create a markdown file containing the creative idea.
   expected_output: >
